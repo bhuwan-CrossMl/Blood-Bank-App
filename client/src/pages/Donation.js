@@ -1,7 +1,7 @@
 import moment from "moment";
 import React, { useEffect, useState } from "react";
 import Layout from "../components/shared/Layout/Layout";
-import API from "../services/API";
+import Axious_Instance from "../services/Axious-Interceptor";
 import { useSelector } from "react-redux";
 
 const Donation = () => {
@@ -10,7 +10,7 @@ const Donation = () => {
   //find donar records
   const getDonars = async () => {
     try {
-      const { data } = await API.post("/inventory/get-inventory-hospital", {
+      const { data } = await Axious_Instance.post("/inventory/get-inventory-hospital", {
         filters: {
           inventoryType: "in",
           donar: user?._id,

@@ -72,7 +72,7 @@ const loginController = async (req, res) => {
       user,
     });
   } catch (error) {
-    console.log(error);
+    console.log("error",error);
     res.status(500).send({
       success: false,
       message: "Error In Login API",

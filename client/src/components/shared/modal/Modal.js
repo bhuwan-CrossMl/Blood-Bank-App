@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import InputType from "./../Form/InputType";
-import API from "./../../../services/API";
+import Axious_Instance from "./../../../services/Axious-Interceptor";
 
 const Modal = () => {
   const [inventoryType, setInventoryType] = useState("in");
@@ -15,7 +15,7 @@ const Modal = () => {
       if (!bloodGroup || !quantity) {
         return alert("Please Provide All Fields");
       }
-      const { data } = await API.post("/inventory/create-inventory", {
+      const { data } = await Axious_Instance.post("/inventory/create-inventory", {
         email,
         organisation: user?._id,
         inventoryType,

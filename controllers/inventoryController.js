@@ -9,7 +9,10 @@ const createInventoryController = async (req, res) => {
     //validation
     const user = await userModel.findOne({ email });
     if (!user) {
-      throw new Error("User Not Found");
+      return res.status(404).send({
+        success: false,
+        message: "User Not Found",
+      });
     }
     // if (inventoryType === "in" && user.role !== "donar") {
     //   throw new Error("Not a donar account");

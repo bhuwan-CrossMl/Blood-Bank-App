@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Layout from "../../components/shared/Layout/Layout";
-import API from "../../services/API";
+import Axious_Instance from "../../services/Axious-Interceptor";
 import moment from "moment";
 
 const Hospitals = () => {
@@ -8,7 +8,7 @@ const Hospitals = () => {
   //find donar records
   const getDonars = async () => {
     try {
-      const { data } = await API.get("/inventory/get-hospitals");
+      const { data } = await Axious_Instance.get("/inventory/get-hospitals");
       //   console.log(data);
       if (data?.success) {
         setData(data?.hospitals);

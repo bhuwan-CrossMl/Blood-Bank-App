@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Layout from "./../../components/shared/Layout/Layout";
 import moment from "moment";
 import { useSelector } from "react-redux";
-import API from "../../services/API";
+import Axious_Instance from "../../services/Axious-Interceptor";
 
 const OrganisationPage = () => {
   // get current user
@@ -12,14 +12,14 @@ const OrganisationPage = () => {
   const getOrg = async () => {
     try {
       if (user?.role === "donar") {
-        const { data } = await API.get("/inventory/get-orgnaisation");
+        const { data } = await Axious_Instance.get("/inventory/get-orgnaisation");
         //   console.log(data);
         if (data?.success) {
           setData(data?.organisations);
         }
       }
       if (user?.role === "hospital") {
-        const { data } = await API.get(
+        const { data } = await Axious_Instance.get(
           "/inventory/get-orgnaisation-for-hospital"
         );
         //   console.log(data);

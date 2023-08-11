@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Header from "../../components/shared/Layout/Header";
-import API from "./../../services/API";
+import Axious_Instance from "./../../services/Axious-Interceptor";
 import moment from "moment";
 
 const Analytics = () => {
@@ -19,7 +19,7 @@ const Analytics = () => {
   //GET BLOOD GROUP DATA
   const getBloodGroupData = async () => {
     try {
-      const { data } = await API.get("/analytics/bloodGroups-data");
+      const { data } = await Axious_Instance.get("/analytics/bloodGroups-data");
       if (data?.success) {
         setData(data?.bloodGroupData);
         // console.log(data);
@@ -37,7 +37,7 @@ const Analytics = () => {
   //get function
   const getBloodRecords = async () => {
     try {
-      const { data } = await API.get("/inventory/get-recent-inventory");
+      const { data } = await Axious_Instance.get("/inventory/get-recent-inventory");
       if (data?.success) {
         setInventoryData(data?.inventory);
         console.log(data);
